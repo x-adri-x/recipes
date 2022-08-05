@@ -1,7 +1,7 @@
 import Recipe from '../../components/Recipe'
 
 export async function getStaticPaths() {
-    const res = await fetch(`http://recipes-one-omega.vercel.app/api/recipes/dessert`)
+    const res = await fetch(`/api/recipes/dessert`)
     const data = await res.json()
 
     const paths = data.recipes.items.map(recipe => {
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
     const recipe = context.params.recipe
-    const res = await fetch(`http://recipes-one-omega.vercel.app/api/recipe/${recipe}?content_type=dessert`)
+    const res = await fetch(`/api/recipe/${recipe}?content_type=dessert`)
     const data = await res.json()
 
     return {
