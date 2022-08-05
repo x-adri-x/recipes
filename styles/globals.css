@@ -1,16 +1,37 @@
-html,
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@200;300;400;500;600;700&family=Quicksand:wght@200;300;400;500;600;700&display=swap');
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: white;
+  font-family: 'Catamaran';
 }
 
 a {
-  color: inherit;
   text-decoration: none;
+  color: #404040;
 }
 
-* {
-  box-sizing: border-box;
+#__next {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 10px;
+}
+
+.page p {
+  text-align: center;
+}
+
+nav {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  font-weight: 200;
+}
+
+nav a {
+  padding: 10px
 }
