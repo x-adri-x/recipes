@@ -1,10 +1,23 @@
 import Recipe from '../../components/Recipe'
 
 export async function getStaticPaths() {
-    const res = await fetch(`/api/recipes/dessert`)
-    const data = await res.json()
+    //const res = await fetch(`/api/recipes/dessert`)
+    
+    const data = 
+    await fetch(`${process.env.CONTENTFUL_HOST}/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries`
+    + `?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}&content_type=dessert`)
+    .then((response) => {
+        if(response.ok){
+            return response.json()
+        } else {
+            throw new Error('Failed to fetch data.')
+        }
+    })
+    .catch(error => console.log(error))
+    //const data = await res.json()
 
-    const paths = data.recipes.items.map(recipe => {
+
+    const paths = data.items.map(recipe => {
         return {
             params: {recipe: recipe.fields.slug}
         }
@@ -17,13 +30,24 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-    const recipe = context.params.recipe
-    const res = await fetch(`/api/recipe/${recipe}?content_type=dessert`)
-    const data = await res.json()
+    const slug = context.params.recipe
+    // const res = await fetch(`/api/recipe/${recipe}?content_type=dessert`)
+    // const data = await res.json()
+    const recipe = 
+    await fetch(`${process.env.CONTENTFUL_HOST}/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries`
+    + `?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}&content_type=dessert&select=fields&fields.slug=${slug}`)
+    .then((response) => {
+        if(response.ok){
+            return response.json()
+        } else {
+            throw new Error('Failed to fetch data.')
+        }
+    })
+    .catch(error => console.log(error))
 
     return {
         props: {
-            recipe: data.recipe
+            recipe: recipe
         }
     }
 }
