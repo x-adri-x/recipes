@@ -1,5 +1,6 @@
 export async function getStaticProps({res, err}) {
     const statusCode = res ? res.statusCode : err ? err.statusCode : 404
+    console.log('STATUSCODE',statuscode)
     return {statusCode}
 }
 
