@@ -1,12 +1,23 @@
 import PageLayout from "../../components/PageLayout";
 
 export async function getStaticProps() {
-    const res = await fetch(`${process.env.DEV_HOST}/api/recipes/soup`)
-    const data = await res.json()
+    // const res = await fetch(`${process.env.DEV_HOST}/api/recipes/soup`)
+    // const data = await res.json()
+    const recipes = 
+    await fetch(`${process.env.CONTENTFUL_HOST}/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries`
+    + `?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}&content_type=soup`)
+    .then((response) => {
+        if(response.ok){
+            return response.json()
+        } else {
+            throw new Error('Failed to fetch data.')
+        }
+    })
+    .catch(error => console.log(error))
 
     return {
         props: {
-            recipes: data.recipes
+            recipes: recipes
         }
     }
 }
