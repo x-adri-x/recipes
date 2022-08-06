@@ -1,8 +1,6 @@
 import Recipe from '../../components/Recipe'
 
 export async function getStaticPaths() {
-    //const res = await fetch(`/api/recipes/dessert`)
-    
     const data = 
     await fetch(`${process.env.CONTENTFUL_HOST}/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries`
     + `?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}&content_type=dessert`)
@@ -14,7 +12,6 @@ export async function getStaticPaths() {
         }
     })
     .catch(error => console.log(error))
-    //const data = await res.json()
 
 
     const paths = data.items.map(recipe => {
@@ -31,8 +28,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
     const slug = context.params.recipe
-    // const res = await fetch(`/api/recipe/${recipe}?content_type=dessert`)
-    // const data = await res.json()
     const recipe = 
     await fetch(`${process.env.CONTENTFUL_HOST}/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries`
     + `?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}&content_type=dessert&select=fields&fields.slug=${slug}`)

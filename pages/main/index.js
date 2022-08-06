@@ -1,8 +1,6 @@
 import PageLayout from "../../components/PageLayout";
 
 export async function getStaticProps() {
-    // const res = await fetch(`${process.env.DEV_HOST}/api/recipes/main`)
-    // const data = await res.json()
     const recipes = 
     await fetch(`${process.env.CONTENTFUL_HOST}/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries`
     + `?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}&content_type=main`)
