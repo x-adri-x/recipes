@@ -25,14 +25,14 @@
     line-height: 2;
 }
 
-/* .method {
-    flex: 1;
-    max-width: 100%;
-    text-align: justify;
-} */
-
 .subtitle {
     align-self: flex-start;
     font-weight: 300;
     font-style: italic;
+}
+
+@media screen and (max-width: 768px) {
+    .subcontainer {
+        grid-template-columns: 1fr;
+    }
 }
