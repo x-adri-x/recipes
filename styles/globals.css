@@ -36,6 +36,19 @@ nav a {
   padding: 10px
 }
 
+.logo-container {
+  display: flex;
+}
+
+.logoutButton {
+  background-color: white;
+  border: 3px solid black;
+  font-weight: 500;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
 @media screen and (max-width: 1200px) and (min-width: 768px) {
   .page {
     grid-template-columns: repeat(4, 1fr);
