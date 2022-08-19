@@ -51,7 +51,6 @@ const RecipeDetail = ({recipe}) => {
 
     return (
         <div>
-            <h1>Recipe details</h1>
             <Recipe recipe = {recipe} />
         </div>
     );
