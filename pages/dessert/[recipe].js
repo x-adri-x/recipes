@@ -27,6 +27,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
+    
     const slug = context.params.recipe
     const recipe = 
     await fetch(`${process.env.CONTENTFUL_HOST}/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries`

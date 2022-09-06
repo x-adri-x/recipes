@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 import {useSession, signIn} from 'next-auth/react'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Login.module.css'
 
 const Layout = ({children}) => {
     const {data: session} = useSession()
