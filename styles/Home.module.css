@@ -1,13 +1,47 @@
-.googleButton {
-  background-color: #4c8bf5;
-  font-size: 1.1rem;
-  width: 250px;
-  height: 50px;
-  border: 1px solid black;
-  border-radius: 5px;
-  letter-spacing: 1.5px;
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.message {
-  font-size: 1.5rem;
+.home input {
+  border-top: none;
+  border-right: none;
+  border-left: none;
 }
+
+.home input:focus {
+  outline: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.input_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.input_container svg {
+  padding: 0 5%;
+}
+
+.todoContainer {
+  display: flex;
+}
+
+.todoContainer a {
+  min-width: 20em;
+}
+
+button.addButton {
+  background-color: #4c8bf5;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+

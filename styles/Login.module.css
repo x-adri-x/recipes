@@ -1,0 +1,13 @@
+.googleButton {
+    background-color: #4c8bf5;
+    font-size: 1.1rem;
+    width: 250px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    letter-spacing: 1.5px;
+  }
+  
+  .message {
+    font-size: 1.5rem;
+  }
