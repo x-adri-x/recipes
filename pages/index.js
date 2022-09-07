@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import Input from '../components/Input'
 import { useQuery, useMutation } from '@tanstack/react-query'
+import { IconContext } from 'react-icons'
 
 
 const Home = () => {
@@ -24,7 +25,7 @@ const Home = () => {
   }
 
   const addTodo = async(newTodo) => {
-    console.log(newTodo)
+    
     const entry = uuidv4()
     const result = await fetch(`${process.env.HOST}/spaces/${process.env.SPACE_ID}/environments/master/entries/${entry}`, {
       method: 'PUT',
@@ -111,6 +112,7 @@ const Home = () => {
   const {isLoading, isError, data, error, refetch} = useQuery(['data'], fetchData)
   
     return (
+      <IconContext.Provider value = {{style: {width: '1.5em', height: '1.5em'}}}>
       <div className = {styles.home}>
         <div className = {styles.container}>
           <h1>Add new recipe to the list:</h1>
@@ -127,7 +129,7 @@ const Home = () => {
                 return (
                     <div key = {index} className = {styles.todoContainer} id = {item.sys.id}>
                         <a href = {item.fields.url}>{item.fields.name}</a>
-                        <IoIosTrash size = '2em' onClick = {(e) => mutationDeleteEntry.mutate(e)}/>
+                        <IoIosTrash onClick = {(e) => mutationDeleteEntry.mutate(e)}/>
                     </div>)
             }
             )
@@ -135,6 +137,7 @@ const Home = () => {
             }
         </div>
       </div> 
+      </IconContext.Provider>
     )
   
 }

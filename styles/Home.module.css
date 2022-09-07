@@ -36,7 +36,8 @@
 }
 
 .todoContainer a {
-  min-width: 20em;
+  width: 85%;
+  word-wrap:normal;
 }
 
 button.addButton {
