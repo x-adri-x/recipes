@@ -1,26 +1,28 @@
-import Navbar from "./Navbar";
-import {useSession, signIn} from 'next-auth/react'
+import Navbar from './Navbar'
+import { useSession, signIn } from 'next-auth/react'
 import styles from '../styles/Login.module.css'
 
-const Layout = ({children}) => {
-    const {data: session} = useSession()
+const Layout = ({ children }) => {
+  const { data: session } = useSession()
 
-    if(!session){
-        return(
-            <div>
-                <Navbar />
-                <p className = {styles.message}>You are currently not signed in.</p>
-                <button className = {styles.googleButton} onClick={() => signIn()}>Sign in with Google</button>
-            </div>
-        )
-    }
+  if (!session) {
+    return (
+      <div>
+        <Navbar />
+        <p className={styles.message}>You are currently not signed in.</p>
+        <button className={styles.googleButton} onClick={() => signIn()}>
+          Sign in with Google
+        </button>
+      </div>
+    )
+  }
 
-    return ( 
-        <div>
-            <Navbar />
-            { children }
-        </div>
-     );
+  return (
+    <div>
+      <Navbar />
+      {children}
+    </div>
+  )
 }
- 
-export default Layout;
+
+export default Layout
