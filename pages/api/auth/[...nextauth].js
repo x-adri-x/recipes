@@ -1,21 +1,45 @@
-import NextAuth from 'next-auth/next'
-import GithubProvider from 'next-auth/providers/github'
-import GoogleProvider from 'next-auth/providers/google'
-import FacebookProvider from 'next-auth/providers/facebook'
+import NextAuth from 'next-auth'
+import Credentials from 'next-auth/providers/credentials'
+import { getUserFromDb } from '../../../lib/utils'
+import bcrypt from 'bcrypt'
 
-export default NextAuth ({
-    providers: [
-        // GithubProvider({
-        //     clientId: process.env.GITHUB_ID,
-        //     clientSecret: process.env.GITHUB_SECRET
-        // }),
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET
-        }),
-        // FacebookProvider({
-        //     clientId: process.env.FACEBOOK_ID,
-        //     clientSecret: process.env.FACEBOOK_SECRET,
-        //   }),
-    ]
+export default NextAuth({
+  providers: [
+    Credentials({
+      credentials: {
+        email: {},
+        password: {},
+      },
+      authorize: async (credentials) => {
+        let user = null
+        user = await getUserFromDb(credentials.email)
+
+        if (!user) {
+          throw new Error('User not found.')
+        }
+
+        const passwordsMatch = await bcrypt.compare(credentials.password, user.password)
+
+        if (passwordsMatch) return user
+        return null
+      },
+    }),
+  ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id
+      }
+      return token
+    },
+    async session({ session, token }) {
+      if (token?.id) {
+        session.user.id = token.id
+      }
+      return session
+    },
+  },
+  session: {
+    strategy: 'jwt',
+  },
 })
