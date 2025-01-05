@@ -21,14 +21,16 @@ const Layout = ({ children }) => {
       <div>
         <p className={styles.message}>You are currently not signed in.</p>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <label>
+          <label htmlFor='email' className={styles.label}>
             Email
-            <input name='email' type='email' className={styles.input} />
           </label>
-          <label>
+          <input name='email' type='email' className={styles.input} />
+
+          <label htmlFor='password' className={styles.label}>
             Password
-            <input name='password' type='password' className={styles.input} />
           </label>
+          <input name='password' type='password' className={styles.input} />
+
           <button type='submit'>Sign In</button>
         </form>
       </div>

@@ -18,9 +18,7 @@ const Home = () => {
     const result = await fetch(
       `${process.env.CONTENTFUL_CDN}/spaces/${process.env.SPACE_ID}/environments/master/entries` +
         `?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}&content_type=todo`
-    ).then((response) => {
-      response.json()
-    })
+    ).then((response) => response.json())
 
     return result
   }
@@ -117,7 +115,7 @@ const Home = () => {
     }
   }
 
-  const { isLoading, isError, data, error, refetch } = useQuery(['data'], fetchData)
+  const { isLoading, isError, data, error, refetch } = useQuery({ queryKey: ['data'], queryFn: fetchData })
 
   return (
     <IconContext.Provider value={{ style: { width: '1.5em', height: '1.5em' } }}>
