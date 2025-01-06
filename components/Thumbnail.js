@@ -7,10 +7,10 @@ const Thumbnail = ({ item, asset }) => {
   const slug = item.fields.slug
 
   return (
-    <div className='thumbnail'>
+    <div className='flex flex-col items-center '>
       <Link href={`/${contentType}/${slug}`}>
         <Image src={'https:' + asset.fields.file.url} alt={asset.fields.title} width='250' height='250' />
-        <p>{title}</p>
+        <p className='text-sm text-center mt-3'>{title}</p>
       </Link>
     </div>
   )

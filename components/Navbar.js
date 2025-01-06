@@ -18,17 +18,30 @@ const Navbar = () => {
   }
 
   return matches ? (
-    <div className='header'>
+    <div className='flex'>
       <Image src='/recipes-logo.png' alt='logo' width={163} height={163} />
-      <nav>
-        <Link href='/'>Home</Link>
-        <Link href='/main'>Main courses</Link>
-        <Link href='/soup'>Soups</Link>
-        <Link href='/dessert'>Desserts</Link>
-        <Link href='/salad'>Salads</Link>
+      <nav className='mx-2.5 font-thin text-gray-500 flex justify-center w-full'>
+        <Link className='p-2.5' href='/'>
+          Home
+        </Link>
+        <Link className='p-2.5' href='/main'>
+          Main courses
+        </Link>
+        <Link className='p-2.5' href='/soup'>
+          Soups
+        </Link>
+        <Link className='p-2.5' href='/dessert'>
+          Desserts
+        </Link>
+        <Link className='p-2.5' href='/salad'>
+          Salads
+        </Link>
       </nav>
       {session ? (
-        <button className='logoutButton' onClick={() => signOut()}>
+        <button
+          className='border-solid border-[3px] rounded-[50%] w-[80px] h-[80px] border-black p-[10px]'
+          onClick={() => signOut()}
+        >
           Logout
         </button>
       ) : null}

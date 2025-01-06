@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import styles from '../styles/Recipe.module.css'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 
@@ -44,9 +43,9 @@ const Recipe = (props) => {
       })
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>{fields.title}</h1>
-      <div className={styles.image}>
+    <div className='flex flex-col items-center p-2'>
+      <h1 className='text-xl font-medium'>{fields.title}</h1>
+      <div className='p-6 border-t-2 border-black max-w-screen-sm'>
         <Image
           src={'https:' + bannerUrl[0].fields.file.url}
           alt={bannerUrl[0].fields.title}
@@ -54,13 +53,13 @@ const Recipe = (props) => {
           height={bannerUrl[0].fields.file.details.image.height}
         />
       </div>
-      <div className={styles.subcontainer}>
-        <div className={styles.ingredients}>
-          <h2 className={styles.subtitle}>Ingredients</h2>
+      <div className='grid sm:grid-cols-2 grid-cols-1 gap-5'>
+        <div className='flex flex-col leading-8 my-4'>
+          <h2 className='mb-4 italic font-thin'>Ingredients</h2>
           {ingredients}
         </div>
         <div>
-          <h2 className={styles.subtitle}>Method</h2>
+          <h2 className='mb-4 italic font-thin mt-4'>Method</h2>
           {method.map((n) => documentToReactComponents(n, options))}
         </div>
       </div>

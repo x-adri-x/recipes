@@ -1,4 +1,3 @@
-import styles from '../styles/Home.module.css'
 import { IoIosAdd } from 'react-icons/io'
 import { IoIosTrash } from 'react-icons/io'
 import { useState } from 'react'
@@ -119,37 +118,35 @@ const Home = () => {
 
   return (
     <IconContext.Provider value={{ style: { width: '1.5em', height: '1.5em' } }}>
-      <div className={styles.home}>
-        <div className={styles.container}>
-          <h1>Add new recipe to the list:</h1>
-          <div className={styles.input_container}>
-            <Input name='name' onChange={setName} value={name} label='Name:' />
-            <Input name='url' onChange={setUrl} value={url} label='URL of the recipe:' />
-            <button
-              className={styles.addButton}
-              onClick={() => mutationAddEntry.mutate({ fields: { name: { 'en-US': name }, url: { 'en-US': url } } })}
-            >
-              <IoIosAdd size='2em' />
-            </button>
-          </div>
-          <h1>Recipes to be added:</h1>
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : isError ? (
-            <p>Error: {error.message}</p>
-          ) : data.items.length > 0 ? (
-            data.items.map((item, index) => {
-              return (
-                <div key={index} className={styles.todoContainer} id={item.sys.id}>
-                  <a href={item.fields.url}>{item.fields.name}</a>
-                  <IoIosTrash onClick={(e) => mutationDeleteEntry.mutate(e)} />
-                </div>
-              )
-            })
-          ) : (
-            <p>There are no recipes to add atm.</p>
-          )}
+      <div className='flex flex-col justify-center p-3 min-h-screen gap-4'>
+        <h1 className='text-2xl text-center mb-8 font-medium'>Add new recipe to the list</h1>
+        <div className='flex flex-col gap-4'>
+          <Input name='name' onChange={setName} value={name} label='Name:' />
+          <Input name='url' onChange={setUrl} value={url} label='URL of the recipe:' />
+          <button
+            className='bg-violet-200 p-2 rounded-md flex justify-center items-center'
+            onClick={() => mutationAddEntry.mutate({ fields: { name: { 'en-US': name }, url: { 'en-US': url } } })}
+          >
+            <IoIosAdd size='2em' />
+          </button>
         </div>
+        <h1 className='text-xl'>Recipes to be added:</h1>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : isError ? (
+          <p>Error: {error.message}</p>
+        ) : data.items.length > 0 ? (
+          data.items.map((item, index) => {
+            return (
+              <div key={index} className='flex w-full' id={item.sys.id}>
+                <a href={item.fields.url}>{item.fields.name}</a>
+                <IoIosTrash onClick={(e) => mutationDeleteEntry.mutate(e)} />
+              </div>
+            )
+          })
+        ) : (
+          <p>There are no recipes to add atm.</p>
+        )}
       </div>
     </IconContext.Provider>
   )
