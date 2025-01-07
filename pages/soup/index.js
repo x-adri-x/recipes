@@ -1,4 +1,5 @@
 import PageLayout from '../../components/PageLayout'
+import Heading from '../../components/Heading'
 
 export async function getStaticProps() {
   const recipes = await fetch(
@@ -24,7 +25,7 @@ export async function getStaticProps() {
 const Soup = ({ recipes }) => {
   return (
     <div>
-      <h1 className='text-xl md:text-3xl font-medium uppercase text-center mb-6'>Soup</h1>
+      <Heading title='Soup' />
       <PageLayout props={recipes} />
     </div>
   )

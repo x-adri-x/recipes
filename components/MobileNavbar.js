@@ -2,24 +2,16 @@ import Link from 'next/link'
 
 const MobileNavbar = () => {
   return (
-    <div className='hidden my-6' id='mobile-navbar'>
-      <div className='grid grid-cols-2 tracking-widest text-center text-base uppercase font-thin'>
-        <Link className='border border-dotted p-9 border-gray-700' href='/main'>
-          Main courses
-        </Link>
-        <Link className='border border-dotted p-9 border-gray-700' href='/soup'>
-          Soups
-        </Link>
-        <Link className='border border-dotted p-9 border-gray-700' href='/dessert'>
-          Desserts
-        </Link>
-        <Link className='border border-dotted p-9 border-gray-700' href='/salad'>
-          Salads
-        </Link>
-        <Link className='border border-dotted p-9 col-span-2 border-gray-700' href='/'>
+    <div className='my-6' id='mobile-navbar'>
+      <nav className='*:border *:border-dotted *:p-9 *:border-gray-700 grid grid-cols-2 tracking-widest text-center sm:text-base text-sm uppercase font-thin'>
+        <Link href='/main'>Main courses</Link>
+        <Link href='/soup'>Soups</Link>
+        <Link href='/dessert'>Desserts</Link>
+        <Link href='/salad'>Salads</Link>
+        <Link className='col-span-2' href='/'>
           Home
         </Link>
-      </div>
+      </nav>
     </div>
   )
 }

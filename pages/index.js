@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import Input from '../components/Input'
 import { useQuery, useMutation } from '@tanstack/react-query'
 import { IconContext } from 'react-icons'
+import Heading from '../components/Heading'
 
 const Home = () => {
   const [url, setUrl] = useState('')
@@ -119,7 +120,7 @@ const Home = () => {
   return (
     <IconContext.Provider value={{ style: { width: '1.5em', height: '1.5em' } }}>
       <div className='flex flex-col justify-center p-3 min-h-screen gap-4'>
-        <h1 className='text-2xl text-center mb-8 font-medium'>Add new recipe to the list</h1>
+        <Heading title='Add new recipe to the list' />
         <div className='flex flex-col gap-4'>
           <Input name='name' onChange={setName} value={name} label='Name:' />
           <Input name='url' onChange={setUrl} value={url} label='URL of the recipe:' />

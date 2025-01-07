@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Heading from './Heading'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 
@@ -44,7 +45,7 @@ const Recipe = (props) => {
 
   return (
     <div className='flex flex-col items-center p-2'>
-      <h1 className='text-xl font-medium'>{fields.title}</h1>
+      <Heading title={fields.title} />
       <div className='p-6 border-t-2 border-black max-w-screen-sm'>
         <Image
           src={'https:' + bannerUrl[0].fields.file.url}
