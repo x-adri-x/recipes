@@ -27,4 +27,4 @@ const MobileNavbar = ({ setIsMobileMenuOpen }) => {
   )
 }
 
-export default MobileNavbar
+export default MobileNavBar
