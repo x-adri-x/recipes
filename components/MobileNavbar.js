@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { MdLogout } from 'react-icons/md'
 
-const MobileNavbar = ({ setIsMobileMenuOpen }) => {
+const MobileNavBar = ({ setIsMobileMenuOpen }) => {
   const handleMenuItemClick = () => {
     setIsMobileMenuOpen(false)
   }
