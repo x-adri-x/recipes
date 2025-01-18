@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Heading from './Heading'
+import Heading from '@/components/Heading'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 

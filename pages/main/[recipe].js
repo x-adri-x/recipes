@@ -1,4 +1,4 @@
-import Recipe from '../../components/Recipe'
+import Recipe from '@/components/Recipe'
 
 export async function getStaticPaths() {
   const data = await fetch(

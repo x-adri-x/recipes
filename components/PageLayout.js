@@ -1,4 +1,4 @@
-import Thumbnail from './Thumbnail'
+import Thumbnail from '@/components/Thumbnail'
 
 const PageLayout = ({ props }) => {
   const Assets = props.includes?.Asset

@@ -1,10 +1,10 @@
 import { useSession, signIn } from 'next-auth/react'
-import Header from './Header'
-import MobileNavBar from './MobileNavBar'
+import Header from '@/components/Header'
+import MobileNavBar from '@/components/MobileNavBar'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { IoClose } from 'react-icons/io5'
-import HorizontalNavbar from './HorizontalNavBar'
+import HorizontalNavbar from '@/components/HorizontalNavBar'
 import { useState } from 'react'
 import Link from 'next/link'
 

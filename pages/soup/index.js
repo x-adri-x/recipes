@@ -1,5 +1,5 @@
-import PageLayout from '../../components/PageLayout'
-import Heading from '../../components/Heading'
+import PageLayout from '@/components/PageLayout'
+import Heading from '@/components/Heading'
 
 export async function getStaticProps() {
   const recipes = await fetch(
