@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { MdLogout } from 'react-icons/md'
+import { signOut } from 'next-auth/react'
 
 const HorizontalNavbar = () => {
   return (
