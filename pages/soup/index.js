@@ -25,7 +25,7 @@ export async function getStaticProps() {
 const Soup = ({ recipes }) => {
   return (
     <div>
-      <Heading title='Soup' />
+      <Heading title='Soups' />
       <PageLayout props={recipes} />
     </div>
   )

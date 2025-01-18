@@ -20,7 +20,7 @@ const Recipe = (props) => {
   const options = {
     renderNode: {
       [BLOCKS.HEADING_5]: (node, children) => <h5>{children}</h5>,
-      [BLOCKS.LIST_ITEM]: (node, children) => <li>{children}</li>,
+      [BLOCKS.LIST_ITEM]: (node, children) => <li className='mb-4'>{children}</li>,
       [BLOCKS.OL_LIST]: (node, children) => <ol>{children}</ol>,
       [BLOCKS.UL_LIST]: (node, children) => <ul>{children}</ul>,
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => (
@@ -44,7 +44,7 @@ const Recipe = (props) => {
       })
 
   return (
-    <div className='flex flex-col items-center p-2'>
+    <div className='flex flex-col items-center px-6 bg-white text-slate-800 font-normal max-w-[960px] mx-auto border-x-[1px] border-x-gray-300'>
       <Heading title={fields.title} />
       <div className='p-6 border-t-2 border-black max-w-screen-sm'>
         <Image
@@ -56,11 +56,11 @@ const Recipe = (props) => {
       </div>
       <div className='grid sm:grid-cols-2 grid-cols-1 gap-5'>
         <div className='flex flex-col leading-8 my-4'>
-          <h2 className='mb-4 italic font-thin'>Ingredients</h2>
+          <h2 className='mb-4 text-lg font-bold'>Ingredients</h2>
           {ingredients}
         </div>
         <div>
-          <h2 className='mb-4 italic font-thin mt-4'>Method</h2>
+          <h2 className='mb-4 text-lg font-bold mt-4'>Method</h2>
           {method.map((n) => documentToReactComponents(n, options))}
         </div>
       </div>

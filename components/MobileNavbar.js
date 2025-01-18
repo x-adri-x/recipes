@@ -1,18 +1,29 @@
 import Link from 'next/link'
+import { MdLogout } from 'react-icons/md'
 
-const MobileNavbar = () => {
+const MobileNavbar = ({ setIsMobileMenuOpen }) => {
+  const handleMenuItemClick = () => {
+    setIsMobileMenuOpen(false)
+  }
+
   return (
-    <div className='my-6' id='mobile-navbar'>
-      <nav className='*:border *:border-dotted *:p-9 *:border-gray-700 grid grid-cols-2 tracking-widest text-center sm:text-base text-sm uppercase font-thin'>
-        <Link href='/main'>Main courses</Link>
-        <Link href='/soup'>Soups</Link>
-        <Link href='/dessert'>Desserts</Link>
-        <Link href='/salad'>Salads</Link>
-        <Link className='col-span-2' href='/'>
-          Home
-        </Link>
-      </nav>
-    </div>
+    <nav className='*:p-2.5 justify-start [&_a]:font-normal [&_a]:border-b-[1px] [&_a]:border-b-slate-100 text-sm text-black [&_a]:uppercase w-full [&_a]:py-6 h-fit tracking-[1.5px] flex flex-col min-h-screen'>
+      <button onClick={() => signOut()}>
+        <MdLogout size='1.5rem' />
+      </button>
+      <Link href='/main' onClick={handleMenuItemClick}>
+        Main
+      </Link>
+      <Link href='/soup' onClick={handleMenuItemClick}>
+        Soups
+      </Link>
+      <Link href='/dessert' onClick={handleMenuItemClick}>
+        Desserts
+      </Link>
+      <Link href='/salad' onClick={handleMenuItemClick}>
+        Salads
+      </Link>
+    </nav>
   )
 }
 

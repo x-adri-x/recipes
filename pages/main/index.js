@@ -24,10 +24,10 @@ export async function getStaticProps() {
 
 const MainCourse = ({ recipes }) => {
   return (
-    <div>
-      <Heading title='Main Course' />
+    <>
+      <Heading title='Main Course Recipes' />
       <PageLayout props={recipes} />
-    </div>
+    </>
   )
 }
 

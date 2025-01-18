@@ -1,4 +1,3 @@
-import { IoIosAdd } from 'react-icons/io'
 import { IoIosTrash } from 'react-icons/io'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
@@ -118,38 +117,47 @@ const Home = () => {
   const { isLoading, isError, data, error, refetch } = useQuery({ queryKey: ['data'], queryFn: fetchData })
 
   return (
-    <IconContext.Provider value={{ style: { width: '1.5em', height: '1.5em' } }}>
-      <div className='flex flex-col justify-center p-3 min-h-screen gap-4'>
-        <Heading title='Add new recipe to the list' />
-        <div className='flex flex-col gap-4'>
-          <Input name='name' onChange={setName} value={name} label='Name:' />
-          <Input name='url' onChange={setUrl} value={url} label='URL of the recipe:' />
-          <button
-            className='bg-violet-200 p-2 rounded-md flex justify-center items-center'
-            onClick={() => mutationAddEntry.mutate({ fields: { name: { 'en-US': name }, url: { 'en-US': url } } })}
-          >
-            <IoIosAdd size='2em' />
-          </button>
+    <div className='bg-kitchen-design bg-cover bg-center p-6 flex flex-col items-center'>
+      <IconContext.Provider value={{ style: { width: '1.5em', height: '1.5em', color: 'white' } }}>
+        <div className='flex flex-col justify-center min-h-screen gap-4 max-w-[600px] items-center  bg-white/30 rounded-3xl backdrop-blur-sm border border-zinc-100 p-2 md:p-8 mt-10'>
+          <Heading title='Add new recipe to the list' />
+          <div className='flex flex-col gap-4 w-full'>
+            <Input name='name' onChange={setName} value={name} label='Name:' />
+            <Input name='url' onChange={setUrl} value={url} label='Link:' />
+            <button
+              className='p-4 mt-3 bg-white/20 rounded-full font-semibold uppercase tracking-[2px] flex justify-center items-center text-white'
+              onClick={() => mutationAddEntry.mutate({ fields: { name: { 'en-US': name }, url: { 'en-US': url } } })}
+            >
+              Add recipe to the list
+            </button>
+          </div>
+          <h2 className='text-xl md:text-2xl text-white font-semibold font-playfair my-6 uppercase'>
+            Recipes to be added:
+          </h2>
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : isError ? (
+            <p>Error: {error.message}</p>
+          ) : data.items.length > 0 ? (
+            data.items.map((item, index) => {
+              return (
+                <div key={index} className='flex w-full' id={item.sys.id}>
+                  <a
+                    href={item.fields.url}
+                    className='text-white pb-2 border-b border-white w-full font-semibold text-lg'
+                  >
+                    {item.fields.name}
+                  </a>
+                  <IoIosTrash onClick={(e) => mutationDeleteEntry.mutate(e)} />
+                </div>
+              )
+            })
+          ) : (
+            <p>There are no recipes to add atm.</p>
+          )}
         </div>
-        <h1 className='text-xl'>Recipes to be added:</h1>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : isError ? (
-          <p>Error: {error.message}</p>
-        ) : data.items.length > 0 ? (
-          data.items.map((item, index) => {
-            return (
-              <div key={index} className='flex w-full' id={item.sys.id}>
-                <a href={item.fields.url}>{item.fields.name}</a>
-                <IoIosTrash onClick={(e) => mutationDeleteEntry.mutate(e)} />
-              </div>
-            )
-          })
-        ) : (
-          <p>There are no recipes to add atm.</p>
-        )}
-      </div>
-    </IconContext.Provider>
+      </IconContext.Provider>
+    </div>
   )
 }
 
