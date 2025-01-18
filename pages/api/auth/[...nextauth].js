@@ -20,6 +20,7 @@ export default NextAuth({
 
         const passwordsMatch = await bcrypt.compare(credentials.password, user.password)
 
+        console.log('passwordsMatch:', passwordsMatch)
         if (passwordsMatch) return user
         return null
       },
