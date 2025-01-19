@@ -2,7 +2,7 @@ import { useSession, signIn } from 'next-auth/react'
 import Header from '@/components/Header'
 import MobileNavBar from '@/components/MobileNavBar'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { AiOutlineMenu } from 'react-icons/ai'
+import { IoMenu } from 'react-icons/io5'
 import { IoClose } from 'react-icons/io5'
 import HorizontalNavbar from '@/components/HorizontalNavBar'
 import { useState } from 'react'
@@ -75,7 +75,7 @@ const Layout = ({ children }) => {
     <div className='min-h-screen'>
       <div className='flex justify-between items-center border-b-4 border-black mx-3 mb-4'>
         {!isMobileMenuOpen ? (
-          <AiOutlineMenu size='1.5rem' className='ml-2 mb-3' onClick={() => setIsMobileMenuOpen(true)} />
+          <IoMenu size='1.5rem' className='ml-2 mb-3' onClick={() => setIsMobileMenuOpen(true)} />
         ) : (
           <IoClose size='1.5rem' onClick={() => setIsMobileMenuOpen(false)} />
         )}

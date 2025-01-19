@@ -1,4 +1,4 @@
-import { IoIosTrash } from 'react-icons/io'
+import { IoTrashBinOutline } from 'react-icons/io5'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import Input from '../components/Input'
@@ -148,7 +148,7 @@ const Home = () => {
                   >
                     {item.fields.name}
                   </a>
-                  <IoIosTrash onClick={(e) => mutationDeleteEntry.mutate(e)} />
+                  <IoTrashBinOutline onClick={(e) => mutationDeleteEntry.mutate(e)} />
                 </div>
               )
             })
