@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Heading from '@/components/Heading'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
+import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 
 const Recipe = (props) => {
   const fields = props.recipe.items[0].fields
@@ -30,6 +30,11 @@ const Recipe = (props) => {
           height={node.data.target.fields.file.details.image.height}
           alt=''
         />
+      ),
+      [INLINES.HYPERLINK]: (node, children) => (
+        <a href={node.data.uri} target='_blank' rel='noopener noreferrer'>
+          {node.content[0].value}
+        </a>
       ),
     },
   }
