@@ -9,7 +9,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 const Layout = ({ children }) => {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const isNotMobile = useMediaQuery('(min-width: 720px)')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
     })
   }
 
-  if (!session) {
+  if (status !== 'authenticated') {
     return (
       <div className='bg-kitchen-design bg-cover bg-center p-4 min-h-screen flex flex-col justify-center items-center w-full'>
         <div className='flex flex-col items-center w-full py-8 bg-gray-100/50 rounded-3xl backdrop-blur-sm border border-zinc-100 max-w-[600px] mx-auto shadow-large'>
