@@ -131,9 +131,7 @@ const Home = () => {
               Add recipe to the list
             </button>
           </div>
-          <h2 className='text-xl md:text-2xl text-white font-semibold font-playfair my-6 uppercase'>
-            Recipes to be added:
-          </h2>
+          <h2 className='text-xl md:text-2xl text-white font-semibold my-6 uppercase'>Recipes to be added:</h2>
           {isLoading ? (
             <p>Loading...</p>
           ) : isError ? (

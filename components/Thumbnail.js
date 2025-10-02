@@ -7,10 +7,18 @@ const Thumbnail = ({ item, asset }) => {
   const slug = item.fields.slug
 
   return (
-    <div className='flex flex-col items-center p-4'>
-      <Link href={`/${contentType}/${slug}`}>
-        <Image src={'https:' + asset.fields.file.url} alt={asset.fields.title} width='250' height='250' />
-        <p className='text-[22px] text-center mt-3 text-black font-playfair font-semibold'>{title}</p>
+    <div className='flex flex-col items-center p-3'>
+      <Link href={`/${contentType}/${slug}`} className='flex flex-col items-center'>
+        <Image
+          src={'https:' + asset.fields.file.url}
+          alt={asset.fields.title}
+          width='250'
+          height='250'
+          placeholder='blur'
+          blurDataURL={asset.fields.file.url + '?w=10&q=10'}
+          className='rounded-2xl'
+        />
+        <p className='text-lg md:text-[22px] text-center mt-3 text-black font-medium'>{title}</p>
       </Link>
     </div>
   )

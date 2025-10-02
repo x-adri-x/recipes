@@ -5,7 +5,6 @@ module.exports = {
     extend: {
       fontFamily: {
         raleway: ['Raleway', 'sans-serif'],
-        playfair: ['"Playfair Display"', 'serif'],
         spartan: ['League Spartan', 'sans-serif'],
       },
       boxShadow: {
