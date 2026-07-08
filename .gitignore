@@ -35,3 +35,7 @@ yarn-error.log*
 # folders
 /pages/api/recipe
 /pages/api/recipes
+
+# AI agent instructions
+/AGENTS.md
+
