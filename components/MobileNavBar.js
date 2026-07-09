@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { IoLogOutOutline } from 'react-icons/io5'
-import { signOut } from 'next-auth/react'
+import { signOut } from '../lib/auth-client'
 
 const MobileNavBar = ({ setIsMobileMenuOpen }) => {
   const handleMenuItemClick = () => {

@@ -1,4 +1,4 @@
-import { useSession, signIn } from 'next-auth/react'
+import { useSession, signIn } from '../lib/auth-client'
 import Header from '@/components/Header'
 import MobileNavBar from '@/components/MobileNavBar'
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -9,7 +9,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 const Layout = ({ children }) => {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
   const isNotMobile = useMediaQuery('(min-width: 720px)')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -17,14 +17,13 @@ const Layout = ({ children }) => {
     e.preventDefault()
     const formData = new FormData(e.target)
 
-    await signIn('credentials', {
-      redirect: false,
+    await signIn.email({
       email: formData.get('email'),
       password: formData.get('password'),
     })
   }
 
-  if (status !== 'authenticated') {
+  if (!session) {
     return (
       <div className='bg-kitchen-design bg-cover bg-center p-4 min-h-screen flex flex-col justify-center items-center w-full'>
         <div className='flex flex-col items-center w-full py-8 bg-gray-100/50 rounded-3xl backdrop-blur-sm border border-zinc-100 max-w-[600px] mx-auto shadow-large'>
