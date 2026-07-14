@@ -10,17 +10,16 @@ const Home = () => {
   const [url, setUrl] = useState('')
   const [name, setName] = useState('')
 
-  const mutationAddEntry = useMutation((newTodo) => addTodo(newTodo))
-  const mutationDeleteEntry = useMutation((id) => deleteTodo(id))
-
   const fetchData = async () => {
     const result = await fetch(
       `${process.env.CONTENTFUL_CDN}/spaces/${process.env.SPACE_ID}/environments/master/entries` +
-        `?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}&content_type=todo`
+        `?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}&content_type=todo`,
     ).then((response) => response.json())
 
     return result
   }
+
+  const { isLoading, isError, data, error, refetch } = useQuery({ queryKey: ['data'], queryFn: fetchData })
 
   const addTodo = async (newTodo) => {
     const entry = uuidv4()
@@ -34,7 +33,7 @@ const Home = () => {
           'X-Contentful-Version': 1,
           Authorization: `Bearer ${process.env.CMA_ACCESS_TOKEN}`,
         },
-      }
+      },
     )
       .then((response) => {
         if (response.ok) {
@@ -83,7 +82,7 @@ const Home = () => {
         headers: {
           Authorization: `Bearer ${process.env.CMA_ACCESS_TOKEN}`,
         },
-      }
+      },
     )
       .then((response) => {
         if (response.ok) {
@@ -114,7 +113,8 @@ const Home = () => {
     }
   }
 
-  const { isLoading, isError, data, error, refetch } = useQuery({ queryKey: ['data'], queryFn: fetchData })
+  const mutationAddEntry = useMutation((newTodo) => addTodo(newTodo))
+  const mutationDeleteEntry = useMutation((id) => deleteTodo(id))
 
   return (
     <div className='bg-kitchen-design bg-cover bg-center p-6 flex flex-col items-center'>
